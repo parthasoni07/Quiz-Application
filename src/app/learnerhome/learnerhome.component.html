@@ -1,0 +1,41 @@
+
+<div class="wrapper">
+ 
+
+  <div class="main_content">
+    <div class="header" *ngIf="!isLoggedin">
+      
+      <h1>Quiz Learner Home Page</h1>
+    </div>
+
+ 
+    <div *ngIf="!isLoggedin" class="card-container" style="margin-top: 150px; margin-left: 0;">
+      <div class="card-container-inner">
+        <div class="card" *ngFor="let quiz of quizData" [ngStyle]="getCardStyle(quiz.id)" (click)="loadLearner(quiz.id)">
+          <img class="card-image" src="assets/image/java.jpg" alt="Java Image"> <!-- Add Java image -->
+          <div class="card-header">
+            {{ quiz.quizTitle }}
+          </div>
+          <div class="card-body">
+            <p>ID: {{ quiz.id }}</p>
+          </div>
+          <div class="card-body">
+            <p>Title: {{ quiz.title }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer" *ngIf="!isLoggedin">
+    <p>&copy; 2023 Quiz Learner</p>
+  </div>
+  </div>
+ 
+  <app-learner *ngIf="!isLoggedin" [isLearnerVisible]="learnerVisible"></app-learner>
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+<div *ngIf="isVisible" class="login-container">
+  <div class="login-background"></div>
+  <h1 style="color: aliceblue;">Welcome To The Quiz Application</h1>
+  <div class="login-form">
+    <input [(ngModel)]="username" placeholder="Username"
+      [ngClass]="{'input-filled': usernameEntered}"
+      (input)="usernameEntered = username.trim() !== ''" />
+    <input [(ngModel)]="password" placeholder="Password" type="password"
+      [ngClass]="{'input-filled': passwordEntered}"
+      (input)="passwordEntered = password.trim() !== ''" />
+    <button (click)="login()">Login</button>
+  </div>
+</div>
+<router-outlet></router-outlet>
+<app-learner [isLearnerVisible]="learnerVisible"></app-learner>
+<app-sidebar></app-sidebar>

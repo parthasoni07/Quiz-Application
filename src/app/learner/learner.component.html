@@ -1,0 +1,110 @@
+<div *ngIf="isLearnerVisible">
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>Quiz</title>
+    <style>
+      body {
+    background-image: url("assets/image/qb.webp");
+    background-size: cover;
+    background-position: center;
+      }
+  
+      .quiz {
+        width: 500px;
+        margin: 0 auto;
+        padding: 10px;
+        background-size: cover;
+        background-position: center;
+      }
+  
+      .quiz h1 {
+        text-align: center;
+        color: #333;
+        font-size: 24px;
+      }
+  
+      .quiz ul {
+        list-style-type: none;
+        padding: 0;
+      }
+  
+      .quiz li {
+        margin-bottom: 10px;
+      }
+  
+      .quiz .question {
+        padding: 10px;
+        border: 1px solid #ddd;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+  
+      .quiz .question h2 {
+        margin-top: 0;
+        color: #333;
+        font-size: 18px;
+      }
+  
+      .radio-button {
+        margin-right: 10px;
+        appearance: none;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        background-color: #fff;
+        cursor: pointer;
+  
+        &:checked {
+          background-color: #000;
+        }
+      }
+  
+      .submit-button {
+        background-color: #FF6600;
+        border: 1px solid #FF6600;
+        border-radius: 5px;
+        padding: 10px;
+        color: #fff;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="success-message" *ngIf="successMessage">
+      <div class="green-tick">
+        <i class="fa fa-check"></i>
+      </div>
+      {{ successMessage }}
+    </div>
+    <div class="error-message" *ngIf="errorMessage">
+      <div class="red-tick">
+        <i class="fa fa-close"></i>
+      </div>
+      {{ errorMessage }}
+    </div>
+    <div class="quiz">
+      <h1>Quiz</h1>
+      <!-- <img src = "assets/image/quizbaground.webp"> -->
+      <!-- <div class="success-message" *ngIf="successMessage">{{ successMessage }}</div>
+      <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div> -->
+      <ul>
+        <li *ngFor="let question of quizData">
+          <div class="question">
+            <h2>{{ question.category }}</h2>
+  
+            <input type="radio" name="question{{ question.id }}" value="{{ question.option1 }}" (click)="onRadioButtonClick(question.id, question.option1)" class="radio-button"> {{ question.option1 }}
+            <input type="radio" name="question{{ question.id }}" value="{{ question.option2 }}" (click)="onRadioButtonClick(question.id, question.option2)" class="radio-button"> {{ question.option2 }}
+            <input type="radio" name="question{{ question.id }}" value="{{ question.option3 }}" (click)="onRadioButtonClick(question.id, question.option3)" class="radio-button"> {{ question.option3 }}
+          </div>
+        </li>
+      </ul>
+      <button type="button" (click)="onSubmit()" class="submit-button">Submit</button>
+    </div>
+  </body>
+  </html>
+  </div>
+  
+  
